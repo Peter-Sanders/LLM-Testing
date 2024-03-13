@@ -20,3 +20,15 @@ Execution:
 
     conda activate llm 
     python llmcpptest.py
+
+Can now also run from llama.cpp server:
+    run this in one terminal;
+        ./server -m ../../models/llama-2-7b-chat.Q2_K.gguf -c 2048 -t 8 -ngl 33 -mg 0
+    edit server_interact.py to change the prompt, then run;
+        python server_interact.py
+
+This now requires the llama.cpp repository stored in the /cpp dir 
+You'll need to checkout and store that repo there;
+
+TODO: dockerize this OR create a makefile so these instructions can be run by just doing a "make -f makefile" 
+
