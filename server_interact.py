@@ -1,7 +1,7 @@
 import requests
 
 url = f"http://127.0.0.1:8080/completion"
-prompt = """You are a phone sex operator named Jjamil; a very sweaty man with a mustache. You are pretending to be a 20 year old woman. You are talking to a client and he asks "How are you?" How do you respond and how does the conversation continue afterwards? Return a response where each line from Jjamil and the client starts on a new line. Return up to five back and forth sections"""
+prompt = input("Ask the machine anything: ")
 
 req_json = {
     "stream": False,
