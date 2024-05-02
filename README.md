@@ -23,12 +23,27 @@ Execution:
 
 Can now also run from llama.cpp server:
     run this in one terminal;
-        ./server -m ../../models/llama-2-7b-chat.Q2_K.gguf -c 2048 -t 8 -ngl 33 -mg 0
+        ./server -m ../../models/llama-2-7b-chat.Q2_K.gguf -c 2048 -t 8 -ngl 33 -mg 0 -spf system_prompt.json
     edit server_interact.py to change the prompt, then run;
         python server_interact.py
+
+server_interact.py is depreceated and I'll delete it once  I'm confident I won't need it in the near future (probs the enxt commit it goes)
+the system prompt file is stored in the same llama.cpp repo that the ./server command should be run from
+
 
 This now requires the llama.cpp repository stored in the /cpp dir 
 You'll need to checkout and store that repo there;
 
-TODO: dockerize this OR create a makefile so these instructions can be run by just doing a "make -f makefile" 
 
+FastAPI Integration:
+
+Can now pass in a prompt from FastAPI. Ain't that neat
+localhost/chat/prompt will return a prompt of your choosing
+just make sure to run uvicorn main:app --reload or somethig to spool up FastAPI in addition to the llamacpp server. It should return a 500 if the llama server isn't running but I'm dumb so the check probably isn't very robust
+
+
+
+
+TODO: dockerize this OR create a makefile so these instructions can be run by just doing a "make -f makefile" 
+TODO: get llama3 in here. Maybe not 2-bit quantized but for sure the 8 billion version
+TODO: do some RAG somehow
